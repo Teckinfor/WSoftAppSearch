@@ -3,4 +3,4 @@ Useful for monitoring the version of Windows software on Elastic Enterprise Sear
 
 # How to install ?
 1. Put the folder *"ElasticSoftAgent"* in the ```C:\Program Files\``` folder
-2. Run the ```install.ps1``` as Admin
+2. Run the ```installer.ps1``` as Admin
