@@ -1,4 +1,10 @@
-﻿Write-Output "Configure service :"
+$CurrentWindowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$CurrentWindowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal($CurrentWindowsIdentity)
+$IsAdmin = $CurrentWindowsPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if($IsAdmin){
+
+Write-Output "Configure service :"
 $endpoint = Read-Host -Prompt "Endpoint"
 $passwordAPI = Read-Host -Prompt "API Password"
 $engine = Read-Host -Prompt "Engine"
@@ -48,3 +54,10 @@ Catch{
 Write-Output "Creating the task scheduled..."
 
 schtasks.exe /create /sc MINUTE /mo 10 /tn ElasticSoftAgent /tr "powershell.exe -File 'C:\Program Files\ElasticSoftAgent\ElasticSoftAgent.ps1'" /ru 'SYSTEM'
+
+} else {
+
+Write-Output "Run the script with admin privileges !"
+sleep 30
+
+}
