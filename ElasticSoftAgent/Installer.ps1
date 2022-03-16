@@ -53,7 +53,7 @@ if($IsAdmin){
     
     Write-Output "Creating the task scheduled..."
     
-    schtasks.exe /create /sc MINUTE /mo 10 /tn ElasticSoftAgent /tr "powershell.exe -File 'C:\Program Files\ElasticSoftAgent\ElasticSoftAgent.ps1'" /ru 'SYSTEM'
+    schtasks.exe /create /sc MINUTE /mo 10 /tn ElasticSoftAgent /F /tr "powershell.exe -File 'C:\Program Files\ElasticSoftAgent\ElasticSoftAgent.ps1'" /ru 'SYSTEM'
 
 } else {
 
