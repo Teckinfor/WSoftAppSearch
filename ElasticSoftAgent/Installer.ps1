@@ -55,6 +55,8 @@ if($IsAdmin){
     
     schtasks.exe /create /sc MINUTE /mo 10 /tn ElasticSoftAgent /F /tr "powershell.exe -File 'C:\Program Files\ElasticSoftAgent\ElasticSoftAgent.ps1'" /ru 'SYSTEM'
 
+    Unblock-File 'C:\Program Files\ElasticSoftAgent\ElasticSoftAgent.ps1'
+
 } else {
 
     Write-Output "Run the script with admin privileges !"
